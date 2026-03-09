@@ -1,0 +1,9 @@
+[Unit]
+Description=Carla Engine
+After=network.target
+[Service]
+Type=simple
+ExecStart=/usr/bin/carla "/home/vincent/.config/carla/main.carxp"
+Restart=on-failure
+[Install]
+WantedBy=default.target
