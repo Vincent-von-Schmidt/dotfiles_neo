@@ -1,0 +1,5 @@
+require("core.keymaps")
+require("core.settings")
+require("core.autocmd")
+require("core.terminal")
+require("core.surround")
