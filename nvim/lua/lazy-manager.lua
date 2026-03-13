@@ -14,9 +14,9 @@ vim.opt.rtp:prepend(lazypath)
  
 -- lazy.nvim
 require("lazy").setup("plugins", {
-	-- install = {
-	-- 	colorscheme = { "rose-pine" },
-	-- },
+	install = {
+		colorscheme = { "rose-pine" },
+	},
 	rocks = {
 		enabled = false,
 	},
