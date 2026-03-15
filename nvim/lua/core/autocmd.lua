@@ -15,13 +15,25 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	end,
 })
 
+-- misc
+
 local misc = vim.api.nvim_create_augroup("misc", { clear = true })
+
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 	desc = "go to last edited position on opening file",
 	group = misc,
 	pattern = "*",
 	command = 'silent! normal! g`"zvzz',
 })
+
+-- TODO: only works on the first time opening one specific help page
+vim.api.nvim_create_autocmd({ "BufRead", "BufEnter", "FileType" }, {
+    group = misc,
+    pattern = { "help", "man" },
+    command = "wincmd L",
+})
+
+--
 
 -- filetypes -----------
 
@@ -42,24 +54,24 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 -- 		end, { force = true })
 -- 	end,
 -- })
--- 
--- -- rust
--- vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
--- 	pattern = "rust",
--- 	group = vim.api.nvim_create_augroup("rust", { clear = true }),
--- 	callback = function()
--- 		-- execute current cargo project
--- 		vim.api.nvim_create_user_command("Run", function()
--- 			if vim.fn.filereadable("./Cargo.toml") then
--- 				-- if cargo project then execute via cargo
--- 				float.term("cargo run")
--- 			else
--- 				-- if idepended rust file compile file with rustc, execute it and remote the executable
--- 				float.term("rustc -o a.out " .. vim.fn.expand("%") .. " && ./a.out && rm a.out")
--- 			end
--- 		end, { force = true })
--- 	end,
--- })
+
+-- rust
+vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
+	pattern = "rust",
+	group = vim.api.nvim_create_augroup("rust", { clear = true }),
+	callback = function()
+		-- execute current cargo project
+		vim.api.nvim_create_user_command("Run", function()
+			if vim.fn.filereadable("./Cargo.toml") then
+				-- if cargo project then execute via cargo
+				float.term("cargo run")
+			else
+				-- if idepended rust file compile file with rustc, execute it and remote the executable
+				float.term("rustc -o a.out " .. vim.fn.expand("%") .. " && ./a.out && rm a.out")
+			end
+		end, { force = true })
+	end,
+})
 
 -- lua
 vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {

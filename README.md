@@ -12,6 +12,7 @@
 - neovim
 - wl-clipboard
 - clang
+- compiledb
 
 #### Audio
 - pipewire
