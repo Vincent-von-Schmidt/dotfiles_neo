@@ -13,6 +13,7 @@
 - wl-clipboard
 - clang
 - compiledb
+- rust-analyzer
 
 #### Audio
 - pipewire
