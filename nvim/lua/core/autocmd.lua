@@ -83,18 +83,27 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
 	end,
 })
 
--- -- c
--- vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
--- 	pattern = "c",
--- 	group = vim.api.nvim_create_augroup("c", { clear = true }),
--- 	callback = function()
--- 		-- compile the current c file, run the binary and delete the binary
--- 		vim.api.nvim_create_user_command("Run", function()
---             if vim.fn.filereadable("./CMakeLists.txt") then
---                 float.term("cmake . && make && ./app")
---             else
---                 float.term("gcc -o a.out " .. vim.fn.expand("%") .. " && ./a.out && rm a.out")
---             end
--- 		end, { force = true })
--- 	end,
--- })
+-- c/cpp
+vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
+    pattern = { "c", "cpp" },
+    group = vim.api.nvim_create_augroup("c", { clear = true }),
+    callback = function ()
+        vim.api.nvim_create_user_command("Run", function ()
+            local cwd = vim.fn.getcwd()
+            local root_dir_cmake = vim.fs.root(0, "CMakeLists.txt")
+
+            if root_dir_cmake ~= nil then
+                -- if cmake project
+
+                -- TODO
+                vim.system({ "cmake", "-S", root_dir_cmake , "-G", "\"Unix Makefiles\"", "-B", root_dir_cmake, "/cmake" }):wait()
+                vim.system({ "make", "-C", "/cmake" }):wait()
+                -- float.term("./cmake/")
+
+            else
+                float.term("gcc -o a.out " .. vim.fn.expand("%") .. " && ./a.out && rm a.out")
+            end
+        end, { force = true })
+    end
+})
+
