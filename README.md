@@ -14,6 +14,7 @@
 - clang
 - compiledb
 - rust-analyzer
+- lua-language-server
 
 #### Audio
 - pipewire

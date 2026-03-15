@@ -10,6 +10,7 @@ return {
         vim.lsp.enable({
             "clangd",
             "rust-analyzer",
+            "lua-language-server",
         })
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -18,8 +19,13 @@ return {
         local on_attach = function(_, bufnr)
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
+            -- lsp specific keymaps
             local opts = { silent = true, buffer = bufnr, noremap = true }
             vim.keymap.set("n", "<leader>li", vim.lsp.buf.hover, opts)
+            vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
+            vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, opts)
+            -- vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, opts)
+            -- vim.keymap.set("n", "<leader>lr", vim.lsp.buf.reference, opts)
         end
 
         vim.lsp.config("*", {
