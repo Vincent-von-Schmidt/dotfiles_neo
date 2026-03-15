@@ -24,8 +24,8 @@ return {
             vim.keymap.set("n", "<leader>li", vim.lsp.buf.hover, opts)
             vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
             vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, opts)
-            -- vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, opts)
-            -- vim.keymap.set("n", "<leader>lr", vim.lsp.buf.reference, opts)
+            vim.keymap.set("n", "<leader>ld", vim.lsp.buf.type_definition, opts)
+            vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, opts)
         end
 
         vim.lsp.config("*", {
