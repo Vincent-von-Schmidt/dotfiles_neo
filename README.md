@@ -7,6 +7,7 @@
 #### misc
 - tldr
 - xone
+- fish
 
 #### NeoVim
 - neovim
