@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-EDITOR="/usr/bin/vim"
+export EDITOR="/usr/bin/vim"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -17,9 +17,16 @@ alias vim='nvim'
 # PS1='[\u@\h \W]\$ '
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n=> '
 
+# path
+export PATH="$PATH:/home/vincent/.local/share/JetBrains/Toolbox/scripts"
+export PATH="$PATH:/home/vincent/.local/bin"
+export PATH="$PATH:/home/vincent/.ghcup/bin"
+
 export LC_ALL=en_US.UTF-8
 
 # rust
 source "$HOME/.cargo/env"
 
-fish
+# fish
+
+[ -f "/home/vincent/.ghcup/env" ] && . "/home/vincent/.ghcup/env" # ghcup-env

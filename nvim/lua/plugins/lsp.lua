@@ -11,6 +11,7 @@ return {
             "clangd",
             "rust-analyzer",
             "lua-language-server",
+            "haskell-language-server",
         })
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
