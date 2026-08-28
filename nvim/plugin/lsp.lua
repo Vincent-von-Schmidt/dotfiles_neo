@@ -1,5 +1,6 @@
 vim.pack.add({ 
     { src = "https://github.com/neovim/nvim-lspconfig" },
+    { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
 })
 
 vim.lsp.enable({
@@ -7,6 +8,7 @@ vim.lsp.enable({
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local on_attach = function(_, bufnr)
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
