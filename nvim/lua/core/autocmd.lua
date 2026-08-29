@@ -38,22 +38,22 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufEnter", "FileType" }, {
 -- filetypes -----------
 
 -- -- python
--- vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
--- 	pattern = "python",
--- 	group = vim.api.nvim_create_augroup("python", { clear = true }),
--- 	callback = function()
--- 		-- execute current python file
--- 		vim.api.nvim_create_user_command("Run", function()
--- 			if vim.fn.filereadable("./main.py") then
--- 				-- if python project execute main file
--- 				float.term("python3 main.py")
--- 			else
--- 				-- if idepended file execute just the file
--- 				float.term("python3 " .. vim.fn.expand("%"))
--- 			end
--- 		end, { force = true })
--- 	end,
--- })
+vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
+	pattern = "python",
+	group = vim.api.nvim_create_augroup("python", { clear = true }),
+	callback = function()
+		-- execute current python file
+		vim.api.nvim_create_user_command("Run", function()
+			if vim.fn.filereadable("./main.py") then
+				-- if python project execute main file
+				float.term("python3 main.py")
+			else
+				-- if idepended file execute just the file
+				float.term("python3 " .. vim.fn.expand("%"))
+			end
+		end, { force = true })
+	end,
+})
 
 -- rust
 vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
