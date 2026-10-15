@@ -5,6 +5,8 @@ vim.pack.add({
 
 vim.lsp.enable({
     "clangd",
+    "tsserver",
+    "pyright"
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
