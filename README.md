@@ -7,7 +7,6 @@
 #### misc
 - tldr
 - xone
-- fish
 
 #### NeoVim
 - neovim
@@ -16,6 +15,8 @@
 - compiledb
 - rust-analyzer
 - lua-language-server
+- pyright (npm i -g pyright)
+- tsserver (npm i -g typescript typescript-language-server)
 
 #### Audio
 - pipewire
