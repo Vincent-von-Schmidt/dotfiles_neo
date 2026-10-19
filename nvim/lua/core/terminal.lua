@@ -1,3 +1,4 @@
+local float = require("utils.float")
 local terminal = vim.api.nvim_create_augroup("term", { clear = true })
 
 vim.keymap.set("n", "<leader>o", function()
@@ -14,6 +15,10 @@ vim.keymap.set("n", "<leader>p", function()
 		win = 0,
 	})
 	vim.fn.termopen("bash")
+end, { silent = true, noremap = true })
+
+vim.keymap.set("n", "<leader>l", function()
+    float.term(os.getenv("SHELL"))
 end, { silent = true, noremap = true })
 
 

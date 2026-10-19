@@ -19,3 +19,7 @@ vim.keymap.set("c", "<c-l>", "<right>", { noremap = true })
 
 -- execute project -> command needs to be defined in filetype autocmd
 vim.keymap.set("n", "<leader>r", ":Run<CR>", { silent = true, noremap = true })
+
+-- close current buffer
+vim.keymap.set("n", "<leader>x", ":q!<CR>", { silent = true, noremap = true })
+
